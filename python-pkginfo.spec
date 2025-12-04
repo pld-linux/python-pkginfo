@@ -124,12 +124,15 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/pkginfo/tests
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pkginfo{,-2}
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/pkginfo/tests
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pkginfo{,-3}
 ln -s pkginfo-3 $RPM_BUILD_ROOT%{_bindir}/pkginfo
